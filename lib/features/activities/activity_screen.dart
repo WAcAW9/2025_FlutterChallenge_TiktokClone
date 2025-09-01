@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktokclone/constrants/gaps.dart';
 import 'package:tiktokclone/constrants/sizes.dart';
+import 'package:tiktokclone/utils.dart';
 
 final _tabs = ["All", "Replies", "Mentions", "Likes"];
 
@@ -62,17 +63,19 @@ class _ActivityScreenState extends State<ActivityScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = isDarkMode(context);
     return DefaultTabController(
       length: _tabs.length,
 
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: isDark ? Colors.black : Colors.white,
           title: Text(
             'Discover',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: Sizes.size32,
+              color: isDark ? Colors.white : Colors.black,
             ),
           ),
           bottom: TabBar(
@@ -82,8 +85,8 @@ class _ActivityScreenState extends State<ActivityScreen> {
             padding: EdgeInsets.symmetric(horizontal: Sizes.size16),
             isScrollable: true,
             unselectedLabelColor: Colors.grey.shade500,
-            labelColor: Colors.black,
-            indicatorColor: Colors.black,
+            labelColor: isDark ? Colors.white : Colors.black,
+            indicatorColor: isDark ? Colors.white : Colors.black,
             indicator: const BoxDecoration(color: Colors.transparent),
             dividerColor: Colors.transparent,
             labelStyle: TextStyle(
@@ -153,10 +156,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                             // message (실제 스레드 메시지)
                             if (_users[i]["message"] != null) ...[
                               Gaps.v5, // alrt와 message 사이의 작은 간격
-                              Text(
-                                _users[i]["message"],
-                                style: const TextStyle(color: Colors.black),
-                              ),
+                              Text(_users[i]["message"]),
                             ],
                             // ListTile의 subtitle이 기본적으로 아래쪽에 마진을 주는 경향이 있으므로
                             // Column을 사용하면 제어가 더 용이합니다.

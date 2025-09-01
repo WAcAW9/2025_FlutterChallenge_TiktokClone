@@ -8,6 +8,7 @@ import 'package:tiktokclone/features/tabNavigation/post_home.dart';
 import 'package:tiktokclone/features/tabNavigation/post_write.dart';
 import 'package:tiktokclone/features/tabNavigation/widgets/nav_button.dart';
 import 'package:tiktokclone/features/users/user_profile_screen.dart';
+import 'package:tiktokclone/utils.dart';
 
 class TabnavigationMain extends StatefulWidget {
   const TabnavigationMain({super.key});
@@ -36,6 +37,8 @@ class _TabnavigationMainState extends State<TabnavigationMain> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = isDarkMode(context);
+
     return Scaffold(
       // appBar: DefaultAppBar(),
       body: Stack(
@@ -48,7 +51,7 @@ class _TabnavigationMainState extends State<TabnavigationMain> {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
+        color: isDarkMode(context) ? Colors.black : Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

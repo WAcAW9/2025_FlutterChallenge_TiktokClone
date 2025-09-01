@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tiktokclone/features/tabNavigation/tabNavigation_main.dart';
 import 'package:tiktokclone/features/users/user_profile_screen.dart';
 
@@ -15,22 +16,39 @@ class TickTokApp extends StatelessWidget {
       title: 'TikTok Clone',
       themeMode: ThemeMode.system,
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white, // 모든 scaffold의 배경 white
-        // appBarTheme: AppBarTheme(
-        //   centerTitle: true, // 제목 가운데 정렬
-
-        //   iconTheme: IconThemeData(color: Colors.blue),
-        //   foregroundColor: Colors.black,
-        //   backgroundColor: Colors.white,
-        //   elevation: 0,
-        //   titleTextStyle: TextStyle(
-        //     color: Colors.black,
-        //     fontSize: Sizes.size16,
-        //   ),
-        // ),
+        useMaterial3: true,
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.white,
+          surfaceTintColor: Colors.white,
+        ),
+        textTheme: Typography.blackMountainView,
         primaryColor: Colors.blue,
+        tabBarTheme: TabBarThemeData(
+          labelColor: Colors.black,
+          unselectedLabelColor: Colors.grey,
+          indicatorColor: Colors.black,
+        ),
       ),
-      darkTheme: ThemeData(scaffoldBackgroundColor: Colors.black),
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        scaffoldBackgroundColor: Colors.black,
+        textTheme: Typography.whiteMountainView,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.black,
+          surfaceTintColor: Colors.black,
+        ),
+        primaryColor: Colors.blue,
+        tabBarTheme: TabBarThemeData(
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.grey,
+          indicatorColor: Colors.white,
+        ),
+        listTileTheme: ListTileThemeData(
+          iconColor: Colors.white,
+          textColor: Colors.white,
+        ),
+      ),
       home: const TabnavigationMain(),
     );
   }

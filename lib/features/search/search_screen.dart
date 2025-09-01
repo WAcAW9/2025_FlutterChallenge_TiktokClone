@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktokclone/constrants/gaps.dart';
 import 'package:tiktokclone/constrants/sizes.dart';
 import 'package:tiktokclone/features/authentication/widgets/H1.dart';
+import 'package:tiktokclone/utils.dart';
 
 final List<Map<String, dynamic>> _users = [
   {"name": "rjmithun", "account": "Mithun", "follower": 26.6},
@@ -34,9 +35,10 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = isDarkMode(context);
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         toolbarHeight: Sizes.size96,
         title: Padding(
           padding: EdgeInsetsGeometry.all(Sizes.size10),
@@ -44,7 +46,14 @@ class SearchScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               H1(text: "Search"),
-              CupertinoSearchTextField(),
+              CupertinoSearchTextField(
+                itemColor: isDark ? Colors.white60 : Colors.grey,
+                cursorColor: Theme.of(context).primaryColor,
+                backgroundColor: isDark
+                    ? const Color.fromARGB(255, 65, 65, 65)
+                    : Colors.grey.shade200,
+                style: TextStyle(color: isDark ? Colors.white : Colors.black),
+              ),
             ],
           ),
         ),
@@ -79,10 +88,7 @@ class SearchScreen extends StatelessWidget {
                       children: [
                         TextSpan(
                           text: "${_users[i]["follower"]}K followers",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -102,6 +108,7 @@ class SearchScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: Sizes.size14,
                         fontWeight: FontWeight.bold,
+                        color: isDark ? Colors.white : Colors.black,
                       ),
                     ),
                   ),

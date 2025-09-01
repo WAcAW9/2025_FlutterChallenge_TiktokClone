@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktokclone/constrants/gaps.dart';
 import 'package:tiktokclone/constrants/sizes.dart';
 import 'package:tiktokclone/features/tabNavigation/article_ellipsis.dart';
+import 'package:tiktokclone/utils.dart';
 
 class PostHome extends StatelessWidget {
   const PostHome({super.key});
@@ -83,6 +84,7 @@ class Article extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = isDarkMode(context);
     return Column(
       children: [
         Row(
@@ -173,13 +175,26 @@ class Article extends StatelessWidget {
                   Gaps.v10,
                   Row(
                     children: [
-                      FaIcon(FontAwesomeIcons.heart, size: Sizes.size24),
+                      FaIcon(
+                        FontAwesomeIcons.heart,
+                        size: Sizes.size24,
+                        color: isDark ? Colors.white60 : Colors.black,
+                      ),
                       Gaps.h14,
-                      FaIcon(FontAwesomeIcons.comment),
+                      FaIcon(
+                        FontAwesomeIcons.comment,
+                        color: isDark ? Colors.white60 : Colors.black,
+                      ),
                       Gaps.h14,
-                      FaIcon(FontAwesomeIcons.retweet),
+                      FaIcon(
+                        FontAwesomeIcons.retweet,
+                        color: isDark ? Colors.white60 : Colors.black,
+                      ),
                       Gaps.h14,
-                      FaIcon(FontAwesomeIcons.paperPlane),
+                      FaIcon(
+                        FontAwesomeIcons.paperPlane,
+                        color: isDark ? Colors.white60 : Colors.black,
+                      ),
                       Gaps.h14,
                     ],
                   ),

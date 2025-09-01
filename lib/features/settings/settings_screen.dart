@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktokclone/features/settings/privacy_screen.dart';
+import 'package:tiktokclone/utils.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -22,9 +23,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = isDarkMode(context);
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        foregroundColor: isDark ? Colors.white : Colors.black,
+        backgroundColor: isDark ? Colors.black : Colors.white,
         title: Center(child: Text('Settings')),
       ),
       body: ListView(

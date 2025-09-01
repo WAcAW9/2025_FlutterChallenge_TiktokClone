@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktokclone/constrants/gaps.dart';
 import 'package:tiktokclone/constrants/sizes.dart';
+import 'package:tiktokclone/utils.dart';
 
 class PostWrite extends StatefulWidget {
   const PostWrite({super.key});
@@ -38,11 +39,12 @@ class _PostWriteState extends State<PostWrite> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final isDark = isDarkMode(context);
 
     return Container(
       height: size.height * 0.95,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDarkMode(context) ? Colors.black : Colors.white,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(Sizes.size16),
           topRight: Radius.circular(Sizes.size16),
@@ -62,7 +64,12 @@ class _PostWriteState extends State<PostWrite> {
                       alignment: Alignment.centerLeft,
                       child: TextButton(
                         onPressed: () => _onClosePressed(context),
-                        child: Text('Cancel'),
+                        child: Text(
+                          'Cancel',
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
                       ),
                     ),
                     Center(
@@ -78,7 +85,10 @@ class _PostWriteState extends State<PostWrite> {
                 ),
               ),
 
-              Divider(height: 1, color: Colors.grey.shade300),
+              Divider(
+                height: 1,
+                color: isDark ? Colors.grey : Colors.grey.shade300,
+              ),
 
               // 내용 영역
               Expanded(
@@ -87,7 +97,11 @@ class _PostWriteState extends State<PostWrite> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Icon(FontAwesomeIcons.userCircle, size: Sizes.size28),
+                      Icon(
+                        FontAwesomeIcons.userCircle,
+                        size: Sizes.size28,
+                        color: Colors.grey,
+                      ),
                       Gaps.h16,
                       Expanded(
                         child: Column(
@@ -130,7 +144,7 @@ class _PostWriteState extends State<PostWrite> {
             left: 0,
             right: 0,
             child: Container(
-              color: Colors.white,
+              color: isDark ? Colors.black : Colors.white,
               padding: EdgeInsets.symmetric(
                 horizontal: Sizes.size16,
                 vertical: Sizes.size12,

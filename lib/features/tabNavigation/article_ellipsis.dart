@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tiktokclone/constrants/gaps.dart';
 import 'package:tiktokclone/constrants/sizes.dart';
 import 'package:tiktokclone/features/tabNavigation/article_report.dart';
+import 'package:tiktokclone/utils.dart';
 
 class ArticleEllipsis extends StatelessWidget {
   const ArticleEllipsis({super.key});
@@ -17,9 +18,12 @@ class ArticleEllipsis extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = isDarkMode(context);
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white, // 배경색 필수!
+        color: isDark
+            ? const Color.fromARGB(255, 33, 33, 33)
+            : Colors.white, // 배경색 필수!
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(Sizes.size16),
           topRight: Radius.circular(Sizes.size16),
@@ -34,7 +38,7 @@ class ArticleEllipsis extends StatelessWidget {
               width: double.infinity,
               padding: EdgeInsets.all(Sizes.size16),
               decoration: BoxDecoration(
-                color: Colors.grey[200],
+                color: isDark ? Colors.black : Colors.grey[200],
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(Sizes.size16),
                   topRight: Radius.circular(Sizes.size16),
@@ -43,7 +47,7 @@ class ArticleEllipsis extends StatelessWidget {
               child: Text(
                 'Unfollow',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: isDark ? Colors.white : Colors.black,
                   fontSize: Sizes.size16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -53,7 +57,7 @@ class ArticleEllipsis extends StatelessWidget {
               width: double.infinity,
               padding: EdgeInsets.all(Sizes.size16),
               decoration: BoxDecoration(
-                color: Colors.grey[200],
+                color: isDark ? Colors.black : Colors.grey[200],
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(Sizes.size16),
                   bottomRight: Radius.circular(Sizes.size16),
@@ -62,7 +66,7 @@ class ArticleEllipsis extends StatelessWidget {
               child: Text(
                 'Mute',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: isDark ? Colors.white : Colors.black,
                   fontSize: Sizes.size16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -73,7 +77,7 @@ class ArticleEllipsis extends StatelessWidget {
               width: double.infinity,
               padding: EdgeInsets.all(Sizes.size16),
               decoration: BoxDecoration(
-                color: Colors.grey[200],
+                color: isDark ? Colors.black : Colors.grey[200],
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(Sizes.size16),
                   topRight: Radius.circular(Sizes.size16),
@@ -82,7 +86,7 @@ class ArticleEllipsis extends StatelessWidget {
               child: Text(
                 'Hide',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: isDark ? Colors.white : Colors.black,
                   fontSize: Sizes.size16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -92,7 +96,7 @@ class ArticleEllipsis extends StatelessWidget {
               width: double.infinity,
               padding: EdgeInsets.all(Sizes.size16),
               decoration: BoxDecoration(
-                color: Colors.grey[200],
+                color: isDark ? Colors.black : Colors.grey[200],
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(Sizes.size16),
                   bottomRight: Radius.circular(Sizes.size16),

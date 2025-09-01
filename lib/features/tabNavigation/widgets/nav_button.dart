@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktokclone/constrants/sizes.dart';
+import 'package:tiktokclone/utils.dart';
 
 class NavButton extends StatelessWidget {
   const NavButton({
@@ -30,6 +32,7 @@ class NavButton extends StatelessWidget {
               child: FaIcon(
                 isSelected ? selectedIcon : icon,
                 size: Sizes.size28,
+                color: isDarkMode(context) ? Colors.white : Colors.black,
               ),
             ),
           ),

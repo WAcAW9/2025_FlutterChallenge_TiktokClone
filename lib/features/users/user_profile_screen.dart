@@ -5,6 +5,7 @@ import 'package:tiktokclone/constrants/sizes.dart';
 import 'package:tiktokclone/features/settings/settings_screen.dart';
 import 'package:tiktokclone/features/tabNavigation/post_home.dart';
 import 'package:tiktokclone/features/users/widgets/persist_tab_bar.dart';
+import 'package:tiktokclone/utils.dart';
 
 class UserProfileScreen extends StatefulWidget {
   const UserProfileScreen({super.key});
@@ -22,6 +23,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = isDarkMode(context);
+
     return Scaffold(
       body: SafeArea(
         child: DefaultTabController(
@@ -30,16 +33,20 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             headerSliverBuilder: (context, innerBoxIsScrolled) {
               return [
                 SliverAppBar(
-                  backgroundColor: Colors.white,
-                  title: FaIcon(FontAwesomeIcons.globe),
-
+                  title: FaIcon(
+                    FontAwesomeIcons.globe,
+                    color: isDark ? Colors.white60 : Colors.grey,
+                  ),
                   floating: true,
                   snap: true,
                   forceElevated: innerBoxIsScrolled,
                   actions: [
                     IconButton(
                       onPressed: _onGearPressed,
-                      icon: const FaIcon(FontAwesomeIcons.gear),
+                      icon: FaIcon(
+                        FontAwesomeIcons.gear,
+                        color: isDark ? Colors.white60 : Colors.grey,
+                      ),
                     ),
                   ],
                 ),
