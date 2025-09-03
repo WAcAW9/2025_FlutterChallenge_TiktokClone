@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktokclone/utils.dart';
 
 class PrivacyScreen extends StatefulWidget {
+  static const String routeName = '/settings/privacy'; // 추가!
   const PrivacyScreen({super.key});
 
   @override
@@ -20,10 +22,16 @@ class _SettingsScreenState extends State<PrivacyScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = isDarkMode(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Center(child: Text('Settings')),
+        backgroundColor: isDark ? Colors.black : Colors.white,
+        title: Center(
+          child: Text(
+            'Settings',
+            style: TextStyle(color: isDark ? Colors.white : Colors.black),
+          ),
+        ),
       ),
       body: ListView(
         children: [

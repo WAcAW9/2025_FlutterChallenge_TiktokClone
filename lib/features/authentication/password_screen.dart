@@ -10,6 +10,7 @@ import 'package:tiktokclone/features/authentication/widgets/default_appbar.dart'
 import 'package:tiktokclone/features/onbording/interest_screen.dart';
 
 class PasswordScreen extends StatefulWidget {
+  static const String routeName = '/password'; // 추가!
   const PasswordScreen({super.key});
 
   @override

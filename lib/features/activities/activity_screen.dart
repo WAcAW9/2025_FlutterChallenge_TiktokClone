@@ -46,6 +46,7 @@ final List<Map<String, dynamic>> _users = [
 ];
 
 class ActivityScreen extends StatefulWidget {
+  static const String routeName = '/activity'; // 추가!
   const ActivityScreen({super.key});
 
   @override

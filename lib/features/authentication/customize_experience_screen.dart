@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tiktokclone/constrants/gaps.dart';
 import 'package:tiktokclone/constrants/sizes.dart';
 import 'package:tiktokclone/features/authentication/customize_experience_screen2.dart';
 import 'package:tiktokclone/features/authentication/widgets/form_button.dart';
 
 class CustomizeExperienceScreen extends StatefulWidget {
+  static const String routeName = '/customize_experience'; // 추가!
   const CustomizeExperienceScreen({super.key});
 
   @override
@@ -20,12 +22,7 @@ class _CustomizeExperienceScreenState extends State<CustomizeExperienceScreen> {
     if (!_isOn) {
       return;
     }
-    // context를 받지 않는다. 그것은 stateful 위젯 안이기 때문에 어디서든 context를 쓸 수 있다.
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const CustomizeExperienceScreen2(),
-      ),
-    );
+    context.push(CustomizeExperienceScreen2.routeName); // '/interests'
   }
 
   @override

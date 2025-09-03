@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tiktokclone/constrants/gaps.dart';
 import 'package:tiktokclone/constrants/sizes.dart';
 import 'package:tiktokclone/features/authentication/customize_experience_screen.dart';
 import 'package:tiktokclone/features/authentication/widgets/form_button.dart';
 
 class CreateAccountScreen extends StatefulWidget {
+  static const String routeName = '/create_account'; // 추가!
+
   const CreateAccountScreen({super.key});
 
   @override
@@ -74,11 +77,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
       return;
     }
     // context를 받지 않는다. 그것은 stateful 위젯 안이기 때문에 어디서든 context를 쓸 수 있다.
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const CustomizeExperienceScreen(),
-      ),
-    );
+    context.pushNamed("customizeExperienc1");
   }
 
   @override

@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tiktokclone/constrants/gaps.dart';
 import 'package:tiktokclone/constrants/sizes.dart';
 import 'package:tiktokclone/features/authentication/create_account_screen.dart';
 import 'package:tiktokclone/features/authentication/widgets/auth_botton.dart';
 
 class InitalScreen extends StatelessWidget {
+  static const String routeName = '/'; // 추가!
   const InitalScreen({super.key});
 
+  // 이전방식
+  // void _onTapCreateAccount(BuildContext context) {
+  //   Navigator.of(
+  //     context,
+  //   ).push(MaterialPageRoute(builder: (context) => CreateAccountScreen()));
+  // }
+
   void _onTapCreateAccount(BuildContext context) {
-    Navigator.of(
-      context,
-    ).push(MaterialPageRoute(builder: (context) => CreateAccountScreen()));
+    context.push(CreateAccountScreen.routeName); // '/interests'
   }
 
   @override

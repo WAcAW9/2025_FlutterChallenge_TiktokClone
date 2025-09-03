@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tiktokclone/features/tabNavigation/tabNavigation_main.dart';
-import 'package:tiktokclone/features/users/user_profile_screen.dart';
+import 'package:tiktokclone/router.dart';
 
 void main() {
   runApp(const TickTokApp());
@@ -12,7 +12,8 @@ class TickTokApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       title: 'TikTok Clone',
       themeMode: ThemeMode.system,
       theme: ThemeData(
@@ -49,7 +50,6 @@ class TickTokApp extends StatelessWidget {
           textColor: Colors.white,
         ),
       ),
-      home: const TabnavigationMain(),
     );
   }
 }

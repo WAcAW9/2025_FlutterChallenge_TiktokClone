@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tiktokclone/constrants/gaps.dart';
 import 'package:tiktokclone/constrants/sizes.dart';
 import 'package:tiktokclone/features/authentication/widgets/form_button.dart';
 
 class CustomizeExperienceScreen2 extends StatefulWidget {
+  static const String routeName = '/customize_experience2'; // 추가!
+
   const CustomizeExperienceScreen2({super.key});
 
   @override
@@ -16,7 +19,9 @@ class _CustomizeExperienceScreenState
     extends State<CustomizeExperienceScreen2> {
   final bool _isOn = false; // 스위치 상태
 
-  void _onNextTap() {}
+  void _onNextTap() {
+    context.push("/users/lynn?show=likes");
+  }
 
   // 체크 아이콘 위젯
   Widget _greenCheck() {

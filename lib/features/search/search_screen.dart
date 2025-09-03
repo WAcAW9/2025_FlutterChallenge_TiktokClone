@@ -31,6 +31,7 @@ final List<Map<String, dynamic>> _users = [
 ];
 
 class SearchScreen extends StatelessWidget {
+  static const String routeName = '/search'; // 추가!
   const SearchScreen({super.key});
 
   @override

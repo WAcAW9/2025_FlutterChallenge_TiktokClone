@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tiktokclone/constrants/gaps.dart';
 import 'package:tiktokclone/constrants/sizes.dart';
 import 'package:tiktokclone/features/settings/settings_screen.dart';
@@ -8,7 +9,14 @@ import 'package:tiktokclone/features/users/widgets/persist_tab_bar.dart';
 import 'package:tiktokclone/utils.dart';
 
 class UserProfileScreen extends StatefulWidget {
-  const UserProfileScreen({super.key});
+  static const String routeName = '/profile'; // 추가!
+  final String username;
+  final String tab;
+  const UserProfileScreen({
+    super.key,
+    required this.username,
+    required this.tab,
+  });
 
   @override
   State<UserProfileScreen> createState() => _UserProfileScreenState();
@@ -16,9 +24,7 @@ class UserProfileScreen extends StatefulWidget {
 
 class _UserProfileScreenState extends State<UserProfileScreen> {
   void _onGearPressed() {
-    Navigator.of(
-      context,
-    ).push(MaterialPageRoute(builder: (_) => const SettingsScreen()));
+    context.push(SettingsScreen.routeName);
   }
 
   @override
@@ -28,6 +34,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     return Scaffold(
       body: SafeArea(
         child: DefaultTabController(
+          initialIndex: widget.tab == "likes" ? 1 : 0,
           length: 2,
           child: NestedScrollView(
             headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -65,7 +72,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Jane',
+                                  widget.username,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: Sizes.size28,
