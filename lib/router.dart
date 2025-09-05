@@ -9,8 +9,8 @@ import 'package:tiktokclone/features/authentication/password_screen.dart';
 import 'package:tiktokclone/features/search/search_screen.dart';
 import 'package:tiktokclone/features/settings/privacy_screen.dart';
 import 'package:tiktokclone/features/settings/settings_screen.dart';
-import 'package:tiktokclone/features/tabNavigation/post_home.dart';
-import 'package:tiktokclone/features/tabNavigation/tabNavigation_main.dart';
+import 'package:tiktokclone/features/tabNavigation/views/post_home.dart';
+import 'package:tiktokclone/features/tabNavigation/views/tabNavigation_main.dart';
 import 'package:tiktokclone/features/users/user_profile_screen.dart';
 
 final router = GoRouter(

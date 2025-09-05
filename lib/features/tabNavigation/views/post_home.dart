@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktokclone/constrants/gaps.dart';
 import 'package:tiktokclone/constrants/sizes.dart';
-import 'package:tiktokclone/features/tabNavigation/article_ellipsis.dart';
+import 'package:tiktokclone/features/tabNavigation/views/article_ellipsis.dart';
 import 'package:tiktokclone/utils.dart';
 
 class PostHome extends StatelessWidget {

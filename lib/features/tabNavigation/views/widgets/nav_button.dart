@@ -32,7 +32,7 @@ class NavButton extends StatelessWidget {
               child: FaIcon(
                 isSelected ? selectedIcon : icon,
                 size: Sizes.size28,
-                color: isDarkMode(context) ? Colors.white : Colors.black,
+                color: Theme.of(context).iconTheme.color, // ✅ 테마에서 가져오기
               ),
             ),
           ),

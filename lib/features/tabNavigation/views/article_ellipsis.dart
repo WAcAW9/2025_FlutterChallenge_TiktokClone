@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tiktokclone/constrants/gaps.dart';
 import 'package:tiktokclone/constrants/sizes.dart';
-import 'package:tiktokclone/features/tabNavigation/article_report.dart';
+import 'package:tiktokclone/features/tabNavigation/views/article_report.dart';
 import 'package:tiktokclone/utils.dart';
 
 class ArticleEllipsis extends StatelessWidget {

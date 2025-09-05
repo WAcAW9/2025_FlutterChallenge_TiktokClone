@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:tiktokclone/features/post_configuration/post_config.dart';
+import 'package:tiktokclone/features/post_configuration/post_config2.dart';
+import 'package:tiktokclone/features/post_configuration/post_config3.dart';
+import 'package:tiktokclone/features/post_configuration/post_config4.dart';
+import 'package:tiktokclone/features/tabNavigation/view_models/darkscreen_configvm.dart';
 import 'package:tiktokclone/utils.dart';
 
 class PrivacyScreen extends StatefulWidget {
@@ -24,23 +30,45 @@ class _SettingsScreenState extends State<PrivacyScreen> {
   Widget build(BuildContext context) {
     final isDark = isDarkMode(context);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: isDark ? Colors.black : Colors.white,
-        title: Center(
-          child: Text(
-            'Settings',
-            style: TextStyle(color: isDark ? Colors.white : Colors.black),
-          ),
-        ),
-      ),
+      appBar: AppBar(title: Center(child: Text('Settings'))),
       body: ListView(
         children: [
-          SwitchListTile.adaptive(
-            value: _notifications,
-            secondary: FaIcon(FontAwesomeIcons.lock),
-            onChanged: _onNotificationsChanged,
-            title: const Text("Privacy profile"),
-          ),
+          // AnimatedBuilder(
+          //   // 값 변경에도 사용된다.
+          //   animation: postConfig3,
+          //   builder: (context, child) => SwitchListTile.adaptive(
+          //     // value: postConfig2.egg
+          //     value: postConfig3.value,
+          //     secondary: FaIcon(FontAwesomeIcons.lock),
+          //     onChanged: (vlaue) {
+          //       // postConfig2.toggleEgg();
+          //       postConfig3.value = !postConfig3.value;
+          //     },
+          //     title: const Text("Privacy profile(test easter Egg)"),
+          //   ),
+          // ),
+          // ValueListenableBuilder(
+          //   valueListenable: postConfig3,
+          //   builder: (context, value, child) => SwitchListTile.adaptive(
+          //     // value: postConfig2.egg
+          //     value: postConfig3.value,
+          //     secondary: FaIcon(FontAwesomeIcons.lock),
+          //     onChanged: (vlaue) {
+          //       // postConfig2.toggleEgg();
+          //       postConfig3.value = !postConfig3.value;
+          //     },
+          //     title: const Text("Privacy profile(test easter Egg)"),
+          //   ),
+          // ),
+          // SwitchListTile.adaptive(
+          //   // watch는 변경사항 항상 변화, read는 한번만 읽고 변하지 않믐
+          //   value: context.watch<DarkscreenConfigvm>().isdark,
+          //   secondary: FaIcon(FontAwesomeIcons.lock),
+          //   onChanged:
+          //       (value) => // 스위치가 value 값을 넣어줄 것이다.
+          //           context.read<DarkscreenConfigvm>().setDark(value),
+          //   title: const Text("Dark Mode"),
+          // ),
           ListTile(
             leading: FaIcon(FontAwesomeIcons.at),
             title: const Text("Account"),

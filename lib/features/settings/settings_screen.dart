@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:tiktokclone/features/settings/privacy_screen.dart';
+import 'package:tiktokclone/features/tabNavigation/view_models/darkscreen_configvm.dart';
 import 'package:tiktokclone/utils.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -25,16 +27,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = isDarkMode(context);
-
     return Scaffold(
-      appBar: AppBar(
-        foregroundColor: isDark ? Colors.white : Colors.black,
-        backgroundColor: isDark ? Colors.black : Colors.white,
-        title: Center(child: Text('Settings')),
-      ),
+      appBar: AppBar(title: Center(child: Text('Settings'))),
       body: ListView(
         children: [
+          SwitchListTile.adaptive(
+            // watch는 변경사항 항상 변화, read는 한번만 읽고 변하지 않믐
+            value: context.watch<DarkscreenConfigvm>().isdark,
+            secondary: FaIcon(FontAwesomeIcons.lightbulb),
+            onChanged:
+                (value) => // 스위치가 value 값을 넣어줄 것이다.
+                    context.read<DarkscreenConfigvm>().setDark(value),
+            title: const Text("Dark Mode"),
+          ),
+
           ListTile(
             leading: FaIcon(FontAwesomeIcons.userPlus),
             title: const Text("Follow and invite friends"),

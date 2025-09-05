@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:tiktokclone/constrants/gaps.dart';
 import 'package:tiktokclone/constrants/sizes.dart';
+import 'package:tiktokclone/features/post_configuration/post_config.dart';
+import 'package:tiktokclone/features/post_configuration/post_config2.dart';
+import 'package:tiktokclone/features/post_configuration/post_config3.dart';
+import 'package:tiktokclone/features/post_configuration/post_config4.dart';
 import 'package:tiktokclone/features/settings/settings_screen.dart';
-import 'package:tiktokclone/features/tabNavigation/post_home.dart';
+import 'package:tiktokclone/features/tabNavigation/view_models/darkscreen_configvm.dart';
+import 'package:tiktokclone/features/tabNavigation/views/post_home.dart';
 import 'package:tiktokclone/features/users/widgets/persist_tab_bar.dart';
 import 'package:tiktokclone/utils.dart';
 
@@ -23,6 +29,19 @@ class UserProfileScreen extends StatefulWidget {
 }
 
 class _UserProfileScreenState extends State<UserProfileScreen> {
+  // bool _egg3 = postConfig3.value;
+
+  // @override
+  // void initState() {
+  //   super.initState();
+
+  //   postConfig3.addListener(() {
+  //     setState(() {
+  //       _egg3 = postConfig3.value;
+  //     });
+  //   });
+  // }
+
   void _onGearPressed() {
     context.push(SettingsScreen.routeName);
   }
@@ -30,6 +49,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = isDarkMode(context);
+    // final postConfig = context.dependOnInheritedWidgetOfExactType<PostConfig>();
+    // // print(postConfig?.egg);
+    // PostConfigData.of(context).egg;
 
     return Scaffold(
       body: SafeArea(
@@ -72,7 +94,10 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  widget.username,
+                                  // context.watch<PostConfig4>().egg
+                                  context.watch<DarkscreenConfigvm>().isdark
+                                      ? 'wacaw'
+                                      : widget.username,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: Sizes.size28,
@@ -94,7 +119,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                               foregroundImage: NetworkImage(
                                 "https://vrthumb.clipartkorea.co.kr/2024/03/22/ti122a19103_01.jpg",
                               ),
-                              child: Text('WACAW'),
+                              child: Text(false ? 'EGG' : 'WACAW'),
                             ),
                           ],
                         ),

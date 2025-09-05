@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:tiktokclone/features/tabNavigation/tabNavigation_main.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tiktokclone/features/post_configuration/post_config2.dart';
+import 'package:tiktokclone/features/post_configuration/post_config4.dart';
+import 'package:tiktokclone/features/tabNavigation/repos/darkscreen_config_repo.dart';
+import 'package:tiktokclone/features/tabNavigation/view_models/darkscreen_configvm.dart';
 import 'package:tiktokclone/router.dart';
 
-void main() {
-  runApp(const TickTokApp());
+void main() async {
+  // ✅ Flutter 엔진 초기화 (필수!)
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final preferences = await SharedPreferences.getInstance();
+  final repository = DarkscreenConfigRepo(preferences);
+  // 레포지토리를 ready 시킴, view모델 초기화 가능
+
+  runApp(ProviderScope(child: TickTokApp()));
 }
 
 class TickTokApp extends StatelessWidget {
@@ -15,13 +27,16 @@ class TickTokApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: router,
       title: 'TikTok Clone',
-      themeMode: ThemeMode.system,
+      themeMode: context.watch<DarkscreenConfigvm>().isdark
+          ? ThemeMode.dark
+          : ThemeMode.light,
       theme: ThemeData(
         useMaterial3: true,
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: AppBarTheme(
+          foregroundColor: Colors.black,
           backgroundColor: Colors.white,
-          surfaceTintColor: Colors.white,
+          surfaceTintColor: Colors.transparent, // ✅ 틴트 제거
         ),
         textTheme: Typography.blackMountainView,
         primaryColor: Colors.blue,
@@ -30,14 +45,17 @@ class TickTokApp extends StatelessWidget {
           unselectedLabelColor: Colors.grey,
           indicatorColor: Colors.black,
         ),
+        bottomAppBarTheme: BottomAppBarTheme(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.black), // 라이트
       ),
       darkTheme: ThemeData(
         useMaterial3: true,
         scaffoldBackgroundColor: Colors.black,
         textTheme: Typography.whiteMountainView,
         appBarTheme: AppBarTheme(
+          foregroundColor: Colors.white,
           backgroundColor: Colors.black,
-          surfaceTintColor: Colors.black,
+          surfaceTintColor: Colors.transparent, // ✅ 틴트 제거
         ),
         primaryColor: Colors.blue,
         tabBarTheme: TabBarThemeData(
@@ -49,6 +67,9 @@ class TickTokApp extends StatelessWidget {
           iconColor: Colors.white,
           textColor: Colors.white,
         ),
+        bottomAppBarTheme: BottomAppBarTheme(color: Colors.black),
+
+        iconTheme: const IconThemeData(color: Colors.white), // 다크
       ),
     );
   }

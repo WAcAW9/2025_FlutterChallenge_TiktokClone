@@ -5,9 +5,9 @@ import 'package:tiktokclone/constrants/gaps.dart';
 import 'package:tiktokclone/constrants/sizes.dart';
 import 'package:tiktokclone/features/activities/activity_screen.dart';
 import 'package:tiktokclone/features/search/search_screen.dart';
-import 'package:tiktokclone/features/tabNavigation/post_home.dart';
-import 'package:tiktokclone/features/tabNavigation/post_write.dart';
-import 'package:tiktokclone/features/tabNavigation/widgets/nav_button.dart';
+import 'package:tiktokclone/features/tabNavigation/views/post_home.dart';
+import 'package:tiktokclone/features/tabNavigation/views/post_write.dart';
+import 'package:tiktokclone/features/tabNavigation/views/widgets/nav_button.dart';
 import 'package:tiktokclone/features/users/user_profile_screen.dart';
 import 'package:tiktokclone/utils.dart';
 
@@ -75,7 +75,7 @@ class _TabnavigationMainState extends State<TabnavigationMain> {
       // ],
       // ),
       bottomNavigationBar: BottomAppBar(
-        color: isDarkMode(context) ? Colors.black : Colors.white,
+        // color: isDarkMode(context) ? Colors.black : Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
