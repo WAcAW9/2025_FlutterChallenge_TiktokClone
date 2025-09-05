@@ -16,18 +16,30 @@ void main() async {
   final repository = DarkscreenConfigRepo(preferences);
   // 레포지토리를 ready 시킴, view모델 초기화 가능
 
-  runApp(ProviderScope(child: TickTokApp()));
+  runApp(
+    ProviderScope(
+      overrides: [
+        DarkscreenConfigProvider.overrideWith(
+          () => DarkscreenConfigvm(repository),
+        ),
+      ],
+      child: TickTokApp(),
+    ),
+  );
 }
 
-class TickTokApp extends StatelessWidget {
+class TickTokApp extends ConsumerWidget {
   const TickTokApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
       routerConfig: router,
       title: 'TikTok Clone',
-      themeMode: context.watch<DarkscreenConfigvm>().isdark
+      themeMode:
+          ref
+              .watch(DarkscreenConfigProvider)
+              .dark // context.watch<DarkscreenConfigvm>().isdark
           ? ThemeMode.dark
           : ThemeMode.light,
       theme: ThemeData(

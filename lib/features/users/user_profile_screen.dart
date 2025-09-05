@@ -95,9 +95,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                               children: [
                                 Text(
                                   // context.watch<PostConfig4>().egg
-                                  context.watch<DarkscreenConfigvm>().isdark
-                                      ? 'wacaw'
-                                      : widget.username,
+                                  // context.watch<DarkscreenConfigvm>().isdark
+                                  false ? 'wacaw' : widget.username,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: Sizes.size28,
