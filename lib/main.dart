@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:provider/provider.dart';
@@ -6,11 +7,15 @@ import 'package:tiktokclone/features/post_configuration/post_config2.dart';
 import 'package:tiktokclone/features/post_configuration/post_config4.dart';
 import 'package:tiktokclone/features/tabNavigation/repos/darkscreen_config_repo.dart';
 import 'package:tiktokclone/features/tabNavigation/view_models/darkscreen_configvm.dart';
+import 'package:tiktokclone/firebase_options.dart';
 import 'package:tiktokclone/router.dart';
 
 void main() async {
   // ✅ Flutter 엔진 초기화 (필수!)
   WidgetsFlutterBinding.ensureInitialized();
+
+  // firebase 초기화 하는 방법
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   final preferences = await SharedPreferences.getInstance();
   final repository = DarkscreenConfigRepo(preferences);
@@ -34,7 +39,7 @@ class TickTokApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
-      routerConfig: router,
+      routerConfig: ref.watch(routerProvider),
       title: 'TikTok Clone',
       themeMode:
           ref

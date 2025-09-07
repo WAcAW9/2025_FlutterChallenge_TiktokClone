@@ -7,7 +7,7 @@ import 'package:tiktokclone/features/authentication/create_account_screen.dart';
 import 'package:tiktokclone/features/authentication/widgets/auth_botton.dart';
 
 class InitalScreen extends StatelessWidget {
-  static const String routeName = '/'; // 추가!
+  static const String routeName = '/inital'; // 추가!
   const InitalScreen({super.key});
 
   // 이전방식
