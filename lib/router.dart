@@ -8,6 +8,7 @@ import 'package:tiktokclone/features/authentication/customize_experience_screen.
 import 'package:tiktokclone/features/authentication/customize_experience_screen2.dart';
 import 'package:tiktokclone/features/authentication/password_screen.dart';
 import 'package:tiktokclone/features/authentication/repos/authentication_repo.dart';
+import 'package:tiktokclone/features/authentication/sign_in_screen.dart';
 import 'package:tiktokclone/features/search/search_screen.dart';
 import 'package:tiktokclone/features/settings/privacy_screen.dart';
 import 'package:tiktokclone/features/settings/settings_screen.dart';
@@ -16,6 +17,8 @@ import 'package:tiktokclone/features/tabNavigation/views/tabNavigation_main.dart
 import 'package:tiktokclone/features/users/user_profile_screen.dart';
 
 final routerProvider = Provider((ref) {
+  // ref.watch(authState); // 변화 감지
+
   return GoRouter(
     initialLocation: '/',
     redirect: (context, state) {
@@ -26,7 +29,7 @@ final routerProvider = Provider((ref) {
         // 초기 화면이 아닌 곳으로 가려고 하면
         if (state.subloc != InitalScreen.routeName) {
           // 리다이렉트
-          return InitalScreen.routeName;
+          return SignInScreen.routeName;
         }
         return null;
       }
@@ -64,6 +67,18 @@ final routerProvider = Provider((ref) {
             builder: (context, state) => const InitalScreen(),
           ),
         ],
+      ),
+      GoRoute(
+        path: '/sign_in',
+        builder: (context, state) => const SignInScreen(),
+      ),
+      GoRoute(
+        path: PasswordScreen.routeName,
+        builder: (context, state) => const PasswordScreen(),
+      ),
+      GoRoute(
+        path: CreateAccountScreen.routeName,
+        builder: (context, state) => const CreateAccountScreen(),
       ),
       GoRoute(
         path: SettingsScreen.routeName,
